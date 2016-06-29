@@ -1,0 +1,23 @@
+<ion-view view-title="欢迎">
+    <ion-content>
+        <div class="bar bar-header login-title">
+            <h1 class="title">账号登录</h1>
+        </div>
+        <div class="content has-header form-row">
+            <div class="list login_style">
+                <label class="item item-input">
+                    <span class="input-label">账号</span>
+                    <input id="username" type="text" placeholder="请输入您的账号" ng-model="user.username" autofocus>
+                </label>
+                <label class="item item-input ">
+                    <span class="input-label">密码</span>
+                    <input id="password" type="password" placeholder="请输入密码" ng-model="user.password">
+                </label>
+            </div>
+        </div>
+        <div class="content has-header form-row login_submit">
+            <button class="button form-button" ng-click="login(user)">登录</button>
+        </div>
+        <div class="content has-header form-row login_footer">忘记密码？</div>
+    </ion-content>
+</ion-view>

@@ -1,0 +1,60 @@
+<ion-view class="body">
+    <ion-header-bar class="bar-light text-center ">
+        <a class="take-back" on-touch="back()"><i class="icon fa fa-angle-left"></i></a>
+
+        <h1 class="title"><span>购进验收</span></h1>
+        <div class="buttons">
+            <button class="button toolbar-button" style="background-color: transparent" ng-click="addGoods()">
+                <span>添加商品</span></button>
+        </div>
+    </ion-header-bar>
+    <ion-content>
+        <div class="list receive" style="margin-bottom: 0" ng-show="show">
+            <label class="item item-input item-icon-right" ng-click="selectVendors()">
+                <span class="input-label">供货商家</span>
+                <input type="text" style="background-color: transparent" placeholder="请选择供货商家" ng-model="receivingNote.vendor.name"
+                       readonly="readonly">
+                <i class="icon fa fa-angle-right"></i>
+            </label>
+            <label class="item item-input ">
+                <span class="input-label">购进单号</span>
+                <input type="text" placeholder="请输入购进单号" ng-model="receivingNote.receivingNo">
+            </label>
+        </div>
+        <ion-list class="list">
+            <ion-item class="item" style="margin: 10px 0 0 0" ng-repeat="p in pharList">
+                <div class="row row-20 item item-icon-right card-title"><span>{{p.name}}</span><a class="icon ion-edit " ng-click="modifyMessage(p)"
+                                                                                                  style="font-size: 20px;color: #45BEC7;;"></a></div>
+                <div class="row row-60 receive-img-div receive-detail-div" style="margin-bottom: 1%;padding-top:3%;">
+                    <div class="receive-img"><img ng-src="{{p.pictureUrl}}"></div>
+                    <div class="receive-list">
+                        <ul>
+                            <li class="receive-text">品&emsp;&emsp;牌 : <span>{{p.brand}}</span></li>
+                            <li class="receive-text">规&emsp;&emsp;格 : <span>{{p.specifications}}</span></li>
+                            <li class="receive-text"><i>生产批号 : <span>{{p.batchCode}}</span></i></li>
+                            <li class="receive-text"><i>供货价格 : <span>{{p.purchasePrice}}</span>
+                            </i></li>
+                            <li class="receive-text"><i><span class="receive-text-span">供货商家 :{{p.producer}}</span>
+                            </i></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="row row-20" style="padding:0">
+                    <div class="col col-50 button button-full button-small text-center"
+                         style="margin:0;border-right:solid 1px #B5B5B5;">合格: {{p.receivingCount}}
+                    </div>
+                    <div class="col col-50 button button-full button-small text-center" style="margin:0;"
+                         ng-click=" modifyCount(p)">不合格:
+                        {{p.failedCount}}
+                    </div>
+                </div>
+                <ion-option-button class="button-assertive text-center" ng-click="deleteItem(p)"> 删除</ion-option-button>
+            </ion-item>
+        </ion-list>
+    </ion-content>
+    <ion-footer-bar class="text-center" style="background-color:#45BEC7;">
+        <div class="buttons" style="width:100%;background: none;border:none;">
+            <button class="button-full footer-bar-button  " ng-click="submit()"><span>提交</span></button>
+        </div>
+    </ion-footer-bar>
+</ion-view>

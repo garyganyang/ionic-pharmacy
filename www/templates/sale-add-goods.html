@@ -1,0 +1,47 @@
+<ion-view class="sale-add-goods">
+    <ion-header-bar align-title="center" class="login-title">
+        <a class="take-back" on-touch="sag.nav('sale')"><i class="icon fa fa-angle-left"></i></a>
+        <h1 class="title">选择商品</h1>
+    </ion-header-bar>
+    <ion-content>
+        <div class="sale-add-content">
+            <input type="text" class="input" placeholder="商品简拼/商品编码/商品条形码" ng-model="sag.goodsName" ng-focus="sag.goSearchGoods();">
+            <button class="button button-small button-scan" ng-click="camera();">扫描商品</button>
+        </div>
+        <div class="sale-goods-content" ng-repeat="n in sag.drugs">
+            <div class="row">
+                <div class="col-30 receive-img"><img src="img/drug_pic.png" alt=""></div>
+                <div class="col-70 sale-drug">
+                    <ul>
+                        <li class="">
+                            <span ng-if="n.name.indexOf('-拆零')!=-1"><img src="img/re.png" alt=""/></span>
+                            <span ng-if="n.gift!='good'"><img src="img/gift.png" alt=""/></span>
+                            {{n.name}}</li>
+                        <li class="li_style">品牌 :{{n.brand}} 规格 :{{n.specifications}}</li>
+                        <li class="sale-add-reduce">
+                            <span class="sale-color" ng-if="n.gift=='good'">{{n.price/100|currency:'￥'}}</span>
+                            <span class="sale-color" ng-if="n.gift!='good'">{{0/100|currency:'￥'}}</span>
+                            <span ng-if="n.gift!='good'" class="sale-not-goods">{{n.count}}</span>
+                            <div class="add-reduce" ng-if="n.gift=='good'">
+                                <span ng-click="sag.reduce(n,$index)">-</span>
+                                <input type="text" class="sale-add-input" ng-model="n.count" ng-change='sag.searchActivity(n)'>
+                                <span ng-click="sag.add(n,$index)">+</span>
+                            </div>
+                        </li>
+                        <li class="li_style" ng-click="sag.show(n)" ng-if="n.activities!=null&&n.activities.length!=0">活动 :{{n.acName}}<i class="icon fa fa-angle-down"></i></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </ion-content>
+    <ion-footer-bar class=" sale-footer">
+        <div class="sale-add-footer">
+            <span>共 : {{sag.total}}件</span>
+            <span>合计 : {{sag.sale_pay|currency:'￥'}}</span>
+        </div>
+        <div class="sale-add-submit" ng-click="sag.submit()">提交</div>
+    </ion-footer-bar>
+</ion-view>
+
+
+

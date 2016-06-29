@@ -1,0 +1,29 @@
+<ion-view class="body">
+    <ion-header-bar class="bar-light text-center">
+        <div class="buttons">
+            <button class="button" ng-click="back()"><i class="icon ion-android-arrow-back"></i></button>
+        </div>
+        <h1 class="title"><span>设备扫描</span></h1>
+        <div class="buttons">
+            <button class="button toolbar-button" ng-click="submit()">提交</button>
+        </div>
+
+    </ion-header-bar>
+    <ion-content style="background-color:#FFFFFF;margin-top:1%;">
+        <div class="item item-input-inset scan-input">
+            <input style="font-size:18px" ng-model="x.code"/>&nbsp;&nbsp;&nbsp;&nbsp;
+            <i ng-click="clear()" class="fa fa-close" style="color: #FFFFFF;"></i>
+        </div>
+    </ion-content>
+    <ion-footer-bar class="scan-bar-footer">
+        <ion-list style="width:100%;">
+            <ion-item style="border:none;font-size:14px;padding:0 10px 0 0;text-align:right;">{{items.length}}</ion-item>
+            <ion-item style="padding:8px;" ng-repeat="item in updateShowItem()">
+                <div class="row icon-right">
+                    <a class="text-center" style="width:90%;color:#333333">{{item}}</a>
+                    <i class="fa fa-close" style="color:#3284C6;font-size:20px;" ng-click="onItemDelete(item)"></i>
+                </div>
+            </ion-item>
+        </ion-list>
+    </ion-footer-bar>
+</ion-view>

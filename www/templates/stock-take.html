@@ -1,0 +1,64 @@
+<ion-view class="stock-take-global">
+    <ion-header-bar align-title="center" class=" login-title">
+        <a class="take-back" on-touch="back()"><i class="icon fa fa-angle-left"></i></a>
+        <h1 class="title">库存盘点</h1>
+    </ion-header-bar>
+    <ion-content>
+        <div class="content stock-take-input">
+            <a class="item item-input list-label item-icon-right"><span>添加商品&emsp;</span>
+                <input type="text" ng-change="findStockTakeProduct()" placeholder="请输入商品条形码/商品编码" ng-model="stock.code"/>
+                <i class="icon ion-ios-barcode-outline" ng-click="stock.cameraBarcode()"></i>
+            </a>
+        </div>
+        <div class="content stock-list" ng-show="stock.showMessage">
+            <div class="">
+                <div>
+                    <span class="span-style">【{{stock.stockTakeProduct.brand}}】【{{stock.stockTakeProduct.name}}】【{{stock.stockTakeProduct.specifications}}】</span>
+                    <span class="button-add" ng-click="stock.inventoryProfit()">添加盘盈</span>
+                </div>
+                <div class="stock-production">{{stock.stockTakeProduct.producer}}</div>
+                <div class="list" ng-repeat="b in stock.batchCodes">
+                    <div class="stock-mount">
+                        <span  class="color-style">生产批号: <span class="exist-span-style">{{b.code}}</span></span>
+                     <span class="stock-right">
+                         <span class="color-style">实盘数量</span>
+                        <input type="text" class="input" ng-model="b.realCount">
+                   </span>
+                    </div>
+                </div>
+            </div>
+            <div ng-repeat="st in stock.stockTakeProfitList">
+                <div class="stock-mount">
+                     <span>
+                      <span class="color-style">生产批号</span>
+          <input type="text" class="input" ng-model="st.batchCode.code" ng-blur="stock.matchBatchCode(st)" ng-change="getDate(st)">
+                    </span>
+                    <span class="stock-right">
+                      <span  class="color-style">实盘数量</span>
+                      <input type="text" class="input" ng-model="st.realCount">
+                    </span>
+                </div>
+                <div class="stock-mount">
+                     <span>
+                      <span  class="color-style">生产日期</span>
+                      <input type="text" class="input" ng-model="st.batchCode.produceDate"
+                             ng-blur="stock.formatDate(st,'PRODUCE_DATE')">
+                    </span>
+                    <span class="stock-right">
+                      <span  class="color-style">有效期至</span>
+                      <input type="text" class="input" ng-model="st.batchCode.expireDate"
+                             ng-blur="stock.formatDate(st,'EXPIRE_DATE')">
+                    </span>
+                </div>
+            </div>
+        </div>
+    </ion-content>
+    <ion-footer-bar class="text-center footer-bar">
+        <div class="buttons" style="width:100%;">
+            <button class="button-full footer-bar-button tab-left" ng-click="stock.completeStockTake('CONTINUE')">
+                <span>继续盘点</span></button>
+            <button class="button-full footer-bar-button tab-right" ng-click="stock.completeStockTake('')"><span>盘点完成</span>
+            </button>
+        </div>
+    </ion-footer-bar>
+</ion-view>

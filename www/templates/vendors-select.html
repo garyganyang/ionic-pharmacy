@@ -1,0 +1,25 @@
+<ion-view class="body">
+    <ion-header-bar class="bar-light text-center">
+        <div class="buttons">
+            <button class="button" ng-click="back()" style="background-color: transparent;color: #FFFFFF;"><i
+                class="icon fa fa-angle-left"></i></button>
+        </div>
+        <h1 class="title"><span>供货商家</span></h1>
+    </ion-header-bar>
+    <ion-content>
+        <div>
+            <div class="item vendor-search">
+                <input class=" item-input item-search" placeholder="供货商家名" ng-change="searchVendor(key)" ng-model="key"/>
+            </div>
+            <div><i class="item vendor-text">全部供货商</i></div>
+            <div class="list item-vendor" ng-repeat="vendor in result">
+                <div class="row list-label" ng-click="selectVendors(vendor)">
+                    <div class="col col-90 ">
+                        <span>{{vendor.name}}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </ion-content>
+</ion-view>span

@@ -1,0 +1,79 @@
+<ion-view class="body">
+    <ion-side-menus style="background-color: #45BEC7;">
+        <ion-side-menu-content drag-content="true">
+            <ion-header-bar align-title="center" class="main-top">
+                <div ng-click="toggleLeftSideMenu();" class="set"><img src="img/set.png" alt=""></div>
+                <p class="title" ng-click="openModal()">{{main.storeName}}&nbsp;&nbsp;<i
+                    class="icon ion-location"></i></p>
+            </ion-header-bar>
+            <ion-content>
+                <script id="my-popover.html" type="text/ng-template">
+                    <ion-popover-view class="left_style">
+                        <ion-content class="style">
+                            <div class="drugstore" ng-repeat="n in dataList">
+                                <div ng-click="closePopover(n.id)">{{n.store}}</div>
+                            </div>
+                        </ion-content>
+                    </ion-popover-view>
+                </script>
+                <div class="content main-center">
+                    <div class="main-two" ng-show="isShow">
+                        <p>今日销售量:{{main.today/100 |currency : '￥'}}</p>
+                        <p>本月销售量:{{main.month/100 |currency : '￥'}}</p>
+                    </div>
+                    <img src="img/main-background.png" alt="" style="width: 100%">
+                    <div class="list main-list">
+                        <a class="item item-avatar" href="#" ng-click="goSale('sale')">
+                            <img src="img/main1.png" alt="" class="main-img">
+                            <span class="main-a"> <span>零售收银</span> <i class="icon fa fa-angle-right"></i></span>
+                        </a>
+                        <div class="main-border"></div>
+                        <a class="item item-avatar" href="#" ng-click="goReceive()">
+                            <img src="img/mian5.png" alt="" class="main-img">
+                            <span class="main-a"> <span>购进验收</span> <i class="icon fa fa-angle-right"></i></span>
+                        </a>
+                        <div class="main_center"></div>
+                        <a class="item item-avatar" href="#" ng-click="goStockTake()">
+                            <img src="img/mian3.png" alt="" class="main-img">
+                            <span class="main-a"> <span>库存盘点</span> <i class="icon fa fa-angle-right"></i></span>
+                        </a>
+                        <div class="main-border"></div>
+                        <a class="item item-avatar" href="#" ng-click="goSale('member')">
+                            <img src="img/main4.png" alt="" class="main-img">
+                            <span class="main-a"> <span>会员管理</span> <i class="icon fa fa-angle-right"></i></span>
+                        </a>
+                        <div class="main_center"></div>
+                    </div>
+                </div>
+            </ion-content>
+        </ion-side-menu-content>
+        <ion-side-menu side="left" drag-content="true">
+            <div class="item item-avatar item-borderless "
+                 style="background-color: #45BEC7;margin-bottom: 2%;position: relative">
+                <img src="img/avatar.jpg" style="min-width:90px;min-height:90px;position: absolute;left:50%;margin-left: -45px">
+            </div>
+            <div class="content">
+                <div class="list main-list">
+                    <a class="item item-avatar" href="#" style="background-color: transparent ;color: white; border-width: 0px;" ng-click="nav('change-key')">
+                        <img src="img/set2.png" alt="" class="set-img">
+                         <span class="set-a"> <span>密码修改</span>
+                         <i class="icon fa fa-angle-right"></i></span>
+                    </a>
+                    <a class="item item-avatar" href="#" style="background-color: transparent ;color: white; border-width: 0px;" ng-click="nav('feedback')">
+                        <img src="img/set3.png" alt="" class="set-img">
+                        <span class="set-a"> <span>意见反馈</span>
+                            <i class="icon fa fa-angle-right"></i></span>
+                    </a>
+                    <a class="item item-avatar" href="#" style="background-color: transparent ;color: white; border-width: 0px;" ng-click="nav('about')">
+                        <img src="img/set4.png" alt="" class="set-img">
+                        <span class="set-a"> <span>关于</span> <i class="icon fa fa-angle-right"></i></span>
+                    </a>
+                    <a class="item item-avatar" href="#" style="background-color: transparent ;color: white; border-width: 0px;" ng-click="loginOut()">
+                        <img src="img/set5.png" alt="" class="set-img">
+                        <span class="set-a"> <span>退出账户</span> <i class="icon fa fa-angle-right"></i></span>
+                    </a>
+                </div>
+            </div>
+            <ion-side-menu>
+    </ion-side-menus>
+</ion-view>

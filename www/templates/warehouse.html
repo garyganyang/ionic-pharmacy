@@ -1,0 +1,22 @@
+<ion-view class="body">
+    <ion-header-bar class="bar-light text-center">
+        <div class="buttons">
+            <button class="button" ng-click="back()"><i class="icon ion-android-arrow-back"></i></button>
+        </div>
+        <h1 class="title"><span>选择仓库</span></h1>
+        <div class="buttons">
+            <button class="button toolbar-button" ng-click="confirm()"><span>确定</span></button>
+        </div>
+    </ion-header-bar>
+    <ion-content style="margin-top:1%;">
+        <div class="list">
+            <a class="item item-icon-right list-label" ng-click="showWarehouses()">输入仓库：<span>{{warehouse==null?'请选择仓库':warehouse.name}}</span><i ng-class="rowClass" class="icon"></i></a>
+            <div class="item" ng-show="displayWarehouses">
+                <ul class="ul-pills">
+                    <li ng-repeat="w in warehouses" value="w.id" ng-click="select(w)" ng-class="{'active':w.selected}">{{w.name}}</li>
+                </ul>
+            </div>
+            <a class="item item-input list-label">输入货位：<input type="text" placeholder="请输入药品存放的货位" ng-model="temp.position"/></a>
+        </div>
+    </ion-content>
+</ion-view>

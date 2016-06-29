@@ -1,0 +1,28 @@
+<ion-view class="body">
+    <ion-header-bar class="bar-light text-center">
+        <div class="buttons">
+            <button class="button" ng-click="back()"><i class="icon ion-android-arrow-back"></i></button>
+        </div>
+        <h1 class="title"><span>选择验收单</span></h1>
+        <div class="buttons">
+            <button class="button toolbar-button" ng-click="confirm()"><span>确定</span></button>
+        </div>
+    </ion-header-bar>
+    <ion-content style="margin-top:1%;">
+        <div class="list">
+            <div class="item row" ng-repeat="n in receivingNotes" ng-click="select(n)">
+                <div class="col col-20 radio-col">
+                    <div class="radio" ng-class="{'checked':n.selected}"></div>
+                </div>
+                <div class="col col-80 table-col">
+                    <ul>
+                        <li style="width:100%;"><span>单号：</span>{{n.id}}</li>
+                        <li><span>验收人：</span>{{n.creator}}</li>
+                        <li><span>验收数量：</span>{{n.cnt}}</li>
+                        <li style="width:100%;"><span>验收时间：</span>{{n.createTime | date:'yyyy-MM-dd HH:mm:ss'}}</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </ion-content>
+</ion-view>

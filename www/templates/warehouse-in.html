@@ -1,0 +1,42 @@
+<ion-view class="body">
+    <ion-header-bar class="bar-light text-center">
+        <div class="buttons">
+            <button class="button" ng-click="back()"><i class="icon ion-android-arrow-back"></i></button>
+        </div>
+        <h1 class="title"><span>商品入库</span></h1>
+        <div class="buttons">
+            <button class="button toolbar-button" ng-click="confirm()"><span>确定</span></button>
+        </div>
+    </ion-header-bar>
+    <ion-content>
+        <div class="list">
+            <div class="item row" style="margin: 1% 0 1% 0;" ng-repeat="d in detailInfo" ng-click="select(d)">
+                <div class="col col-10 radio-col">
+                    <div class="radio" ng-class="{'checked':d.selected}"></div>
+                </div>
+                <div class="col col-30">
+                    <img ng-src="{{d.pharmacopoeia.pictureUrl}}" style="width:100%;"/>
+                </div>
+                <div class="col col-60 table-col">
+                    <ul>
+                        <li style="font-weight:600;width:100%;">{{d.pharmacopoeia.brand}}{{d.pharmacopoeia.name}}</li>
+                        <li style="width:100%;"><span>生产批号：</span>{{d.batchCode}}</li>
+                        <li style="width:100%;"><span>入库数量：</span>{{d.cnt}}</li>
+                        <li style="width:100%;"><span>入库仓库：</span>{{d.warehouse.name}}</li>
+                        <li style="width:100%;"><span>入库货位：</span>{{d.position}}</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </ion-content>
+    <ion-footer-bar class="text-center footer-bar">
+        <div class="buttons" style="width:50%;">
+            <button class="button-full footer-bar-button" style="border-right:solid 1px #F2F2F2;" ng-click="selectReceivingNote()"><span>调取验收单</span></button>
+        </div>
+        <div class="buttons" style="width:50%;">
+            <button class="button-full footer-bar-button" style="border-left:solid 1px #F2F2F2;" ng-class="{'disabled':selectedItems.length==0}" ng-disabled="selectedItems.length==0"
+                    ng-click="selectWarehouse()">
+                <span>选择仓库</span></button>
+        </div>
+    </ion-footer-bar>
+</ion-view>

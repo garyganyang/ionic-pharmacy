@@ -1,0 +1,57 @@
+<ion-view class="stock-take-global member-detail">
+    <ion-header-bar align-title="center" class="login-title">
+        <a class="take-back" on-touch="mdc.nav('member')"><i class="icon fa fa-angle-left"></i></a>
+        <h1 class="title">信息查看</h1>
+    </ion-header-bar>
+    <ion-content>
+        <div class="member-detail-body">
+            <div class="member-detail-body-header">
+                <img src="img/avatar.png" alt="">
+                <h2>{{mdc.list.name}}</h2>
+                <p>{{mdc.list.level}}</p>
+            </div>
+            <div class="list">
+                <label class="item item-input">
+                    <span class="input-label">联系电话：</span>
+                    <span>{{mdc.list.mobile}}</span>
+                </label>
+                <label class="item item-input">
+                    <span class="input-label">性别：</span>
+                    <span ng-if="mdc.list.gender=='FEMALE'">女</span>
+                    <span ng-if="mdc.list.gender=='MALE'">男</span>
+                </label>
+                <label class="item item-input">
+                    <span class="input-label">生日：</span>
+                    <span>{{mdc.list.birthDay}}</span>
+                </label>
+                <label class="item item-input">
+                    <span class="input-label">最近消费：</span>
+                    <span>{{mdc.list.lastPayDate | date:'yyyy-MM-dd HH:mm'}}</span>
+                </label>
+                <label class="item item-input">
+                    <span class="input-label">累计消费：</span>
+                    <span>{{mdc.list.totalMoney}}</span>
+                </label>
+                <div class="item item-button-right">
+                    <span class="input-label">剩余积分：</span>
+                    <span>{{mdc.list.bonusPoint}}</span>
+                    <button class="button button-positive" ng-click="mdc.openRedeem();" ng-disabled="mdc.list.status=='DISABLE'">
+                        兑换
+                    </button>
+                </div>
+            </div>
+        </div>
+    </ion-content>
+    <ion-footer-bar class="text-center footer-bar">
+        <div class="buttons" style="width:100%;">
+            <button class="button-full footer-bar-button tab-left" ng-if="mdc.list.status" ng-click="mdc.changeMember();">
+                <span>修改</span></button>
+            <button class="button-full footer-bar-button tab-right" ng-if="mdc.list.status" ng-click="mdc.stopRedeem();">
+                <span ng-if="mdc.list.status=='NORMAL'">停用</span>
+                <span ng-if="mdc.list.status=='DISABLE'">启用</span>
+            </button>
+        </div>
+    </ion-footer-bar>
+</ion-view>
+
+

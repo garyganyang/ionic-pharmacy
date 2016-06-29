@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin xmlns="http://www.phonegap.com/ns/plugins/1.0"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    id="com.jianfukeji.ionic.plugins.barcodescanner"
+    version="1.0.0">
+
+    <name>BarcodeScanner</name>
+    <engines>
+        <engine name="cordova" version=">=3.0.0"/>
+    </engines>
+    <js-module src="www/BarcodeScanner.js" name="BarcodeScanner">
+        <clobbers target="BarcodeScanner" />
+    </js-module>
+
+    <!-- android -->
+    <platform name="android">
+        <source-file src="src/android/src/com/jianfukeji/ionic/plugins/barcodescanner/BarcodeScanner.java" target-dir="src/com/jianfukeji/ionic/plugins/barcodescanner" />
+        <config-file target="res/xml/config.xml" parent="/*">
+            <feature name="BarcodeScanner">
+                <param name="android-package" value="com.jianfukeji.ionic.plugins.barcodescanner.BarcodeScanner" />
+            </feature>
+        </config-file>
+
+        <config-file target="AndroidManifest.xml" parent="/*/application">
+            <activity
+                android:name="com.jianfukeji.ionic.plugins.barcodescanner.SingleScanActivity"
+                android:clearTaskOnLaunch="true"
+                android:configChanges="orientation|keyboardHidden"
+                android:theme="@android:style/Theme.DeviceDefault.NoActionBar"
+                android:screenOrientation="portrait"
+                android:windowSoftInputMode="stateAlwaysHidden" />
+            <activity
+                android:name="com.jianfukeji.ionic.plugins.barcodescanner.MultipeScanActivity"
+                android:clearTaskOnLaunch="true"
+                android:configChanges="orientation|keyboardHidden"
+                android:theme="@android:style/Theme.DeviceDefault.NoActionBar"
+                android:screenOrientation="portrait"
+                android:windowSoftInputMode="stateAlwaysHidden" />
+        </config-file>
+
+        <config-file target="AndroidManifest.xml" parent="/*">
+            <uses-permission android:name="android.permission.CAMERA" />
+        </config-file>
+
+        <framework src="me.dm7.barcodescanner:core:1.8.4" />
+        <framework src="me.dm7.barcodescanner:zxing:1.8.4" />
+
+        <source-file src="src/android/src/com/jianfukeji/ionic/plugins/barcodescanner/MultipeScanActivity.java" target-dir="src/com/jianfukeji/ionic/plugins/barcodescanner" />
+        <source-file src="src/android/src/com/jianfukeji/ionic/plugins/barcodescanner/SingleScanActivity.java" target-dir="src/com/jianfukeji/ionic/plugins/barcodescanner" />
+
+        <source-file src="src/android/res/layout/item_view_holder_layout.xml" target-dir="res/layout" />
+        <source-file src="src/android/res/layout/multipe_scan_layout.xml" target-dir="res/layout" />
+        <source-file src="src/android/res/layout/single_scan_layout.xml" target-dir="res/layout" />
+        <source-file src="src/android/res/mipmap-hdpi/back.png" target-dir="res/drawable-hdpi" />
+        <source-file src="src/android/res/mipmap-hdpi/delete.png" target-dir="res/drawable-hdpi" />
+        <source-file src="src/android/res/mipmap-mdpi/back.png" target-dir="res/drawable-mdpi" />
+        <source-file src="src/android/res/mipmap-mdpi/delete.png" target-dir="res/drawable-mdpi" />
+        <source-file src="src/android/res/mipmap-xhdpi/back.png" target-dir="res/drawable-xhdpi" />
+        <source-file src="src/android/res/mipmap-xhdpi/delete.png" target-dir="res/drawable-xhdpi" />
+        <source-file src="src/android/res/mipmap-xxhdpi/back.png" target-dir="res/drawable-xxhdpi" />
+        <source-file src="src/android/res/mipmap-xxhdpi/delete.png" target-dir="res/drawable-xxhdpi" />
+        <source-file src="src/android/res/mipmap-xxxhdpi/back.png" target-dir="res/drawable-xxxhdpi" />
+        <source-file src="src/android/res/mipmap-xxxhdpi/delete.png" target-dir="res/drawable-xxxhdpi" />
+    </platform>
+</plugin>

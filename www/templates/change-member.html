@@ -1,0 +1,42 @@
+<ion-view class="stock-take-global">
+    <ion-header-bar align-title="center" class="login-title">
+        <a class="take-back" on-touch="cmc.nav('member-detail')"><i class="icon fa fa-angle-left"></i></a>
+        <h1 class="title">信息修改</h1>
+    </ion-header-bar>
+    <ion-content>
+        <div class="change-member-body">
+            <div class="change-member-body-header">
+                <img src="img/avatar.png" alt="">
+                <h2> {{cmc.list.name}}
+                    <i ng-if="cmc.list.gender=='FEMALE'" class="icon ion-female" style="color: #46bec7 ;font-size: 14px"></i>
+                    <i ng-if="cmc.list.gender=='MALE'" class="icon ion-male" style="color: #46bec7 ;font-size: 14px"></i>
+                </h2>
+                <p class="idCard">{{cmc.list.idCard}}</p>
+                <p class="birthday">{{cmc.list.birthDay}}</p>
+            </div>
+            <div class="list">
+                <label class="item item-input">
+                    <span class="input-label">当前地址</span>
+                    <input type="text" ng-model="cmc.list.address">
+                </label>
+                <label class="item item-input  item-select">
+                    <span class="input-label">会员类型</span>
+                    <select ng-options="t.name for t in cmc.memberLevels track by t.id"
+                            ng-model="cmc.selectedMemberLevel">
+                    </select>
+                </label>
+                <label class="item item-input">
+                    <span class="input-label">联系电话</span>
+                    <input type="text" ng-model="cmc.list.mobile">
+                </label>
+                <label class="item item-input item-select">
+                    <span class="input-label">医保类型</span>
+                    <select ng-options="t.comment for t in cmc.healthTypes track by t.key"
+                            ng-model="cmc.selectedHealthType">
+                    </select>
+                </label>
+            </div>
+            <button class="button button-clear save-button" ng-click="cmc.saveChangeMember();">确认</button>
+        </div>
+    </ion-content>
+</ion-view>

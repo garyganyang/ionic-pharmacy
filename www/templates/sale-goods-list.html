@@ -1,0 +1,33 @@
+<ion-view class="stock-take-global">
+    <ion-header-bar align-title="center" class="login-title">
+        <a class="take-back" on-touch="sgl.nav('sale')"><i class="icon fa fa-angle-left"></i></a>
+        <h1 class="title">商品清单</h1>
+    </ion-header-bar>
+    <ion-content>
+        <div class="sale-goods-list-content">
+            <div class="sale-goods-list" ng-repeat="n in sgl.drugs">
+                <div class="row">
+                    <div class="col-30 receive-img"><img src="img/drug_pic.png" alt=""></div>
+                    <div class="col-70 sale-list-drug">
+                        <ul>
+                            <li class="">
+                                <span ng-if="n.name.indexOf('-拆零')!=-1"><img src="img/re.png" alt=""/></span>
+                                <span ng-if="n.gift!='good'"><img src="img/gift.png" alt=""/></span>
+                                {{n.name}}</li>
+                            <li class="list_style">品牌 :{{n.brand}} 规格 :{{n.specifications}}</li>
+                            <li class="sale_list_style">
+                                <span class="sale-color" ng-if="n.gift=='good'">{{n.price/100|currency:'￥'}}</span>
+                                <span class="sale-color" ng-if="n.gift!='good'">{{0/100|currency:'￥'}}</span>
+                                <span class="sale_list_style2">X{{n.count}}</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </ion-content>
+    <ion-footer-bar class="text-center">
+    </ion-footer-bar>
+</ion-view>
+
+

@@ -1,0 +1,70 @@
+<ion-view class="body">
+    <ion-header-bar class="bar-light text-center">
+        <a class="take-back" on-touch="back()"><i class="icon fa fa-angle-left"></i></a>
+        <h1 class="title"><span>添加商品</span></h1>
+        <div class="buttons">
+            <button class="button toolbar-button" style="background-color: transparent" ng-click="submit()"><span>提交</span>
+            </button>
+        </div>
+    </ion-header-bar>
+    <ion-content style="margin-top:1%">
+        <div class="list">
+            <div class="item row" ng-show="show">
+                <div class="col col-40"><img ng-src="{{drugNote.pictureUrl}}" style="width:90%;height:100px;"></div>
+                <div class="col col-60">
+                    <table class="item-table">
+                        <thead>
+                        <tr>
+                            <td colspan="2">{{drugNote.name}}</td>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td style="width:25%;">规格：</td>
+                            <td>{{drugNote.specifications}}</td>
+                        </tr>
+                        <tr>
+                            <td style="width:25%;">剂型：</td>
+                            <td>{{drugNote.dosageForm}}</td>
+                        </tr>
+                        <tr>
+                            <td style="width:25%;">厂家：</td>
+                            <td>{{drugNote.producer}}</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <a class="item item-input list-label item-icon-right" style="color: #666666"><span>验收商品&emsp;</span>
+                <input type="text" ng-change="findProductMessage(drug.code)" placeholder="输入商品编码或条形码" ng-model="drug.code"/>
+                <i class="icon ion-ios-barcode-outline" ng-click="cameraBarcode()"></i>
+            </a>
+            <label class="item item-input list-label item-icon-right"><span>生产批号&emsp;</span>
+                <input type="text" placeholder="输入生产批号" ng-change="selectBatchCode()" ng-model="drugNote.batchCode">
+            </label>
+            <label class="item item-input list-label item-icon-right"><span>生产日期&emsp;</span>
+                <input type="text" placeholder="输入生产日期" ng-model="drugNote.produceDay" ng-blur="formatDate(drugNote.produceDay,'PRODUCE_DAY')"/>
+            </label>
+            <label class="item item-input list-label item-icon-right"><span>有效日期&emsp;</span>
+                <input type="text" placeholder="输入有效日期" ng-model="drugNote.expireDay" ng-blur="formatDate(drugNote.expireDay,'EXPIRE_DAY')"/>
+            </label>
+            <label class="item item-input list-label item-icon-right"><span>供货价格&emsp;</span>
+                <input type="number" placeholder="0.00" ng-model="drugNote.purchasePrice" onkeydown="priceOnlyKeydown(event)"/>
+            </label>
+            <label class="item item-input list-label item-icon-right"><span>验收数量&emsp;</span>
+                <input type="number" placeholder="输入验收数量" ng-model="drugNote.receivingCount">
+            </label>
+            <label class="item item-input list-label item-icon-right"><span>不合格数量：</span>
+                <input type="number" placeholder="输入不合格数量" ng-model="drugNote.failedCount"/>
+            </label>
+            <label class="item item-input list-label item-icon-right"><span>不合格处理：</span>
+                <input type="text" ng-model="drugNote.failedOperation"/>
+            </label>
+        </div>
+    </ion-content>
+    <ion-footer-bar class="text-center footer-bar" ng-show="show">
+        <div class="buttons" style="width:100%;">
+            <button class="button-full footer-bar-button" ng-click="goOnAdd()"><span>继续添加</span></button>
+        </div>
+    </ion-footer-bar>
+</ion-view>

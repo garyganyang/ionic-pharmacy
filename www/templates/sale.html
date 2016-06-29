@@ -1,0 +1,47 @@
+<ion-view class="sale-global">
+    <ion-header-bar align-title="center" class="login-title">
+        <a class="take-back" on-touch="back()"><i class="icon fa fa-angle-left"></i></a>
+        <h1 class="title">零售收银</h1>
+    </ion-header-bar>
+    <ion-content>
+        <div class="sale-content">
+            <button class="button sale-button" ng-click="sale.goAdd('sale-add-goods')">添加商品</button>
+        </div>
+        <div class="sale-select-member">
+            <div class="row">
+                <span class="col-50">客户: {{sale.name}}</span>
+                <span class="col-50 select-member" ng-click="sale.nav('sale-choose-member')">选择会员 &nbsp;<i class="icon fa fa-angle-right"></i></span>
+            </div>
+            <div class="row"><span>积分:{{sale.bonusP}}</span></div>
+            <div class="row"><span>身份证:{{sale.code}} <img src="img/sale-select.png" alt="" style="width:15px;height: 15px"></span></div>
+        </div>
+        <div class="sale-select-list">
+            <div class="row sale-list">
+                <span class="col-50">商品数量</span>
+                <span class="col-50 select-member" ng-click="sale.goGoodList('sale-goods-list')">{{sale.total}} &nbsp;<i class="icon fa fa-angle-right"></i></span>
+            </div>
+            <div class="row sale-list">
+                <span class="col-50">总计</span>
+                <span class="col-50 select-member sale-color">{{sale.sale_pay|currency:'￥'}}</span>
+            </div>
+            <div class="row sale-list">
+                <span class="col-50">支付方式</span>
+                <span class="col-50 select-member">现金支付</span>
+            </div>
+            <div class="row sale-list">
+                <span class="sale-actual">实收:<input type="text" placeholder="输入实收金额" ng-model="sale.realPay" ng-change="sale.change()" ng-focus="sale.resetChange()"></span>
+            </div>
+            <div class="row sale-change">
+                找零:<span class="sale-color">{{sale.sale_change|currency:'￥'}}</span>
+            </div>
+        </div>
+    </ion-content>
+    <ion-footer-bar class="text-center sale-footer">
+        <div class="col-25 sale-footer-div" on-touch="sale.nav('sale-lading-bill')"><span class="sale-footer-img"><img src="img/sale-bill.png" alt="" class=""></span> 提单</div>
+        <div class="col-25 sale-footer-div" on-touch="sale.resting()"><span class="sale-footer-img"><img src="img/sale-lading.png" alt=""></span> 挂单</div>
+        <div class="col-25 sale-footer-div" on-touch="sale.cancel()"><span class="sale-footer-img"><img src="img/sale-repeal.png" alt=""></span> 撤单</div>
+        <div class="col-25 sale-account" on-touch="sale.calculate()">结账</div> <!--结账成功-->
+    </ion-footer-bar>
+</ion-view>
+
+

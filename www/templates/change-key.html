@@ -1,0 +1,30 @@
+<ion-view>
+    <ion-content>
+        <ion-header-bar align-title="center" class="login-title">
+            <a class="take-back" on-touch="back()"><i class="icon fa fa-angle-left"></i></a>
+            <h1 class="title">密码修改</h1>
+        </ion-header-bar>
+        <div class="content has-header">
+            <div class="list padding change-key">
+                <label class="item-input">
+                    <input type="password" placeholder="请输入原密码" ng-model="key.startKey">
+                </label>
+                <label class=" item-input">
+                    <input type="password" name='nowKey' placeholder="请输入新密码" ng-model="key.nowKey" ng-blur="check()">
+                </label>
+                <label class=" item-input">
+                    <input type="password" name='newKey' placeholder="请确认新密码" ng-model="key.newKey">
+                </label>
+                <div class="padding">
+                    <p ng-show="!isShow" class="key-error">* 新密码长度为6-10位数字或英文字符</p>
+                </div>
+            </div>
+            <p class="key-note">注：两次密码需一致，且密码长度为6-10位数字或英文字符</p>
+            <div class="padding">
+                <button class="button button-block button-change-key" ng-click="submit()">确认</button>
+            </div>
+        </div>
+    </ion-content>
+</ion-view>
+
+

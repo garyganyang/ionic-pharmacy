@@ -1,0 +1,26 @@
+<ion-view class="stock-take-global">
+    <ion-header-bar align-title="center" class="login-title">
+        <a class="take-back" on-touch="scm.nav('main')"><i class="icon fa fa-angle-left"></i></a>
+        <h1 class="title">会员列表</h1>
+    </ion-header-bar>
+    <ion-content>
+        <div>
+            <div class="item vendor-search">
+                <input class=" item-input item-search" placeholder="搜索会员" ng-change="scm.searchMember(scm.searchValue)" ng-model="scm.searchValue"/>
+            </div>
+            <div class="list stock-take-global-body" ng-repeat="list in scm.memberList" ng-click="scm.choose(list);">
+                <a class="item item-avatar">
+                    <img src="img/avatar.png">
+                    <h2><span>{{list.name}}</span> <span class="member-card">{{list.level}}</span></h2>
+                    <p>
+                        <span><img src="img/member_phone.png" alt=""></span>
+                        <span class="number-style">{{list.mobile}}</span>
+                        <span><img class="img-style" src="img/member_credits.png" alt=""></span>
+                        <span class="credits-style">{{list.bonusPoint}}</span>
+                    </p>
+                </a>
+            </div>
+        </div>
+    </ion-content>
+</ion-view>
+

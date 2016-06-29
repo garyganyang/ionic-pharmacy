@@ -1,0 +1,28 @@
+<ion-view class="stock-take-global">
+    <ion-header-bar align-title="center" class="login-title">
+        <a class="take-back" on-touch="slb.nav('sale')"><i class="icon fa fa-angle-left"></i></a>
+        <h1 class="title">提单</h1>
+    </ion-header-bar>
+    <ion-content>
+        <div class="lading-bill-content">
+            <div class="list-item" on-double-tap="slb.fetch(item)" ng-repeat="item in slb.drugs">
+                <div class="div-item">
+                    <i class="ion-calendar text_45bec7"></i>
+                    <span>{{item.restingTime}}</span>
+                </div>
+                <div class="item-body">
+                    <ul>
+                        <li>客户：<span>{{item.name}}</span></li>
+                        <li>
+                            <div class="inline clientInfo">总数量：<span class="text_45bec7">{{item.total}}</span></div>
+                            <div class="inline clientInfo">总金额：<span class="text_45bec7">{{item.sale_pay|currency:"￥"}}</span></div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </ion-content>
+
+</ion-view>
+

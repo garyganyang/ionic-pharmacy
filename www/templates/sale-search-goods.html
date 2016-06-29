@@ -1,0 +1,33 @@
+<ion-view class="sale-add-goods">
+    <ion-header-bar align-title="center" class="login-title">
+        <a class="take-back" on-touch="ssg.nav('sale-add-goods')"><i class="icon fa fa-angle-left"></i></a>
+        <h1 class="title">选择商品</h1>
+    </ion-header-bar>
+    <ion-content>
+        <div class="sale-search-content">
+            <input type="text" class="input" placeholder="商品简拼/商品编码/商品条形码" ng-model="ssg.goodsName" ng-change="ssg.goodsList(ssg.goodsName);" autofocus>
+        </div>
+            <div class="sale-goods-list-content">
+            <div class="sale-goods-list" ng-repeat="n in ssg.drugs">
+                <div class="row">
+                    <div class="col-30 receive-img"><img src="img/drug_pic.png" alt=""></div>
+                    <div class="col-70 sale-list-drug">
+                        <ul>
+                            <li class="">{{n.name}}</li>
+                            <li class="list_style li_style_brand">品牌 :{{n.brand}}</li>
+                            <li class="list_style li_style_sale">规格 :{{n.specifications}}</li>
+                            <li class="sale_search_style">
+                                <span class="sale-color">{{n.price/100|currency:'￥'}}</span>
+                                <span class="sale-search-button" ng-click="ssg.add(n,$index)">添加</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </ion-content>
+</ion-view>
+
+
+
+

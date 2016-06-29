@@ -1,0 +1,19 @@
+<ion-view class="sale-settle-accounts">
+    <ion-header-bar align-title="center" class="login-title">
+        <a class="take-back" on-touch="ssa.nav('sale')"><i class="icon fa fa-angle-left"></i></a>
+        <h1 class="title">零售收银</h1>
+    </ion-header-bar>
+    <ion-content>
+        <div class="sale-settle-content">
+            <img src="img/sale-settle.png" alt="">
+            <div class="sale-settle-center">收银成功！</div>
+            <div>此次的消费金额为：<span class="sale-settle-color">{{ssa.price|currency:'￥'}}</span></div>
+        </div>
+        <div class="sale-settle-footer">
+            <button class="button sale-button" on-touch="ssa.nav('sale')">继续销售</button>
+        </div>
+    </ion-content>
+</ion-view>
+
+
+

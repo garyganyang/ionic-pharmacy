@@ -1,0 +1,24 @@
+<ion-view class="body ">
+    <ion-header-bar class="bar-light text-center">
+        <div class="buttons">
+            <button class="button"><i class="icon ion-android-arrow-back" ng-click="back()"></i></button>
+        </div>
+        <h1 class="title">选择物流单</h1>
+    </ion-header-bar>
+    <ion-content style="margin-top: 2%">
+        <div class=" row list notes-list " style="margin-top: 0" ng-click="selectLogistics(note)" ng-repeat="note in logisticsNotes">
+            <div class="col col-10">
+                <i class="ion ion-android-document note-item-icon"></i>
+            </div>
+            <div class="col col-80 ">
+                <ul style="margin-left: 5% ;">
+                    <li class="note-item" style="width:100%;">订单号：{{note.id}}</li>
+                    <li class="note-item" style="width: 100%;">物流公司：{{note.enterprise}}</li>
+                </ul>
+            </div>
+            <div class="col col-10 ">
+                <i class="ion " style="font-size: 18px;padding-top: 30%; padding-right: 5%">{{note.drugCount}}</i>
+            </div>
+        </div>
+    </ion-content>
+</ion-view>
